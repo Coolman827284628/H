@@ -1,0 +1,18 @@
+local localPlayer = game.Players.LocalPlayer
+local localPlayerCF = localPlayer.Character.HumanoidRootPart.CFrame
+
+for _, player in pairs(game.Players:GetPlayers()) do
+    if player ~= localPlayer then
+        player.Character.HumanoidRootPart.CFrame = localPlayerCF
+        player.Character.Humanoid.PlatformStand = true
+        player.Character.Humanoid.WalkSpeed = 0
+        player.Character.Humanoid.JumpPower = 0
+        for _, part in pairs(player.Character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Anchored = true
+            end
+        end
+    end
+end
+
+localPlayer.Character.HumanoidRootPart.Anchored = false
